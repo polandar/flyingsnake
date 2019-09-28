@@ -112,11 +112,12 @@ def flyingsnake(input_file: str,
         del draw
         to_merge.append(background)
 
+    range_iter = range(world.size.x)
+
     if draw_walls:
         c.echo("Drawing walls...")
         walls = Image.new("RGBA", (world.size.x, world.size.y))
         draw = ImageDraw.Draw(walls)
-        range_iter = range(world.size.x)
         with c.progressbar(range_iter, label="Portion of rows done") as bar:
             for x in bar:
                 for y in range(world.size.y):
@@ -134,7 +135,6 @@ def flyingsnake(input_file: str,
         c.echo("Drawing liquids...")
         liquids = Image.new("RGBA", (world.size.x, world.size.y))
         draw = ImageDraw.Draw(liquids)
-        range_iter = range(world.size.x)
         with c.progressbar(range_iter, label="Portion of rows done") as bar:
             for x in bar:
                 for y in range(world.size.y):
